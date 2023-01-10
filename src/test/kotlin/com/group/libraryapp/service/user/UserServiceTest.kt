@@ -4,11 +4,8 @@ import com.group.libraryapp.domain.user.User
 import com.group.libraryapp.domain.user.UserRepository
 import com.group.libraryapp.dto.user.request.UserCreateRequest
 import com.group.libraryapp.dto.user.request.UserUpdateRequest
-import org.assertj.core.api.Assertions
-import org.assertj.core.api.Assertions.*
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.AfterEach
-import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -41,8 +38,8 @@ class UserServiceTest @Autowired constructor(
     fun getUserTest() {
         // given
         userRepository.saveAll(listOf(
-            User("A",20),
-            User("B",null)
+            User("A", 20),
+            User("B", null)
         ))
         // when
         val results = userService.getUsers()
@@ -58,7 +55,7 @@ class UserServiceTest @Autowired constructor(
         val savedUser = userRepository.save(
             User("A", null)
         )
-        val request = UserUpdateRequest(savedUser.id, "B")
+        val request = UserUpdateRequest(savedUser.id!!, "B")
         // when
         userService.updateUserName(request)
         //then
