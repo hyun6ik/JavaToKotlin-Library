@@ -66,7 +66,7 @@ class UserServiceTest @Autowired constructor(
     @Test
     fun deleteUserNameTest() {
         // given
-        val savedUser = userRepository.save(
+        userRepository.save(
             User("A", null)
         )
         // when
